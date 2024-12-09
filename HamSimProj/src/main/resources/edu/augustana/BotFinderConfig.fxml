@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.BotFinderConfigController">
+   <bottom>
+      <Button fx:id="acceptBotsButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Accept" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="30.0" top="20.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="24.0" prefWidth="132.0" text="How many bots?">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Slider fx:id="numBotsSlider" majorTickUnit="1.0" max="5.0" maxWidth="-Infinity" min="1.0" minHeight="-Infinity" minorTickCount="0" prefHeight="14.0" prefWidth="263.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+            <Label text="WPM" />
+            <Slider fx:id="wpmSlider" majorTickUnit="1.0" max="25.0" maxHeight="-Infinity" maxWidth="-Infinity" min="10.0" minorTickCount="0" prefHeight="38.0" prefWidth="263.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+   </center>
+</BorderPane>

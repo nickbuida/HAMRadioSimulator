@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane onKeyPressed="#handleKeyPress" onKeyReleased="#handleKeyRelease" style="-fx-background-color: #353538;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.UI.MainUiController">
+   <center>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="388.0" prefWidth="613.0" style="-fx-background-color: gray;">
+         <children>
+            <HBox fx:id="mainHbox" prefHeight="680.0" prefWidth="1280.0" style="-fx-background-color: #353538;">
+               <children>
+                  <Pane prefHeight="670.0" prefWidth="876.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <StackPane prefHeight="522.0" prefWidth="856.0">
+                                 <children>
+                                    <ImageView fx:id="radioImage" fitHeight="678.0" fitWidth="836.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/RadioUIMain.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="displayLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="107.0" prefWidth="287.0" style="-fx-background-color: #006aff;" text="600Hz  456.465465Mhz  14:00  30m " textAlignment="CENTER" textOverrun="CLIP" translateX="190.0" translateY="-125.0" wrapText="true">
+                                       <font>
+                                          <Font name="Technology Regular" size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Slider fx:id="freqSlider" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="14.0" prefWidth="528.0" translateX="-63.0" translateY="240.0" />
+                                    <RadioButton fx:id="muteBtn" accessibleRole="BUTTON" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="33.0" prefWidth="21.0" scaleX="2.0" scaleY="2.0" translateX="277.0" translateY="230.0" />
+                                    <RadioButton fx:id="powerBtn" accessibleRole="BUTTON" alignment="TOP_LEFT" layoutX="418.0" layoutY="321.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="21.0" scaleX="2.0" scaleY="2.0" translateX="330.0" translateY="230.0" />
+                                    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="176.0" prefWidth="706.0" translateX="10.0" translateY="55.0">
+                                       <children>
+                                          <HBox prefHeight="176.0" prefWidth="706.0">
+                                             <children>
+                                                <GridPane fx:id="knobGridPane" prefHeight="176.0" prefWidth="392.0">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <VBox fx:id="knobBox00" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="195.0" text="VOLUME">
+                                                               <VBox.margin>
+                                                                  <Insets top="10.0" />
+                                                               </VBox.margin>
+                                                               <font>
+                                                                  <Font name="Consolas Bold" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox fx:id="knobBox01" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+                                                         <children>
+                                                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="195.0" text="BAND">
+                                                               <font>
+                                                                  <Font name="Consolas Bold" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox fx:id="knobBox10" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                                                         <children>
+                                                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="195.0" text="FILTER">
+                                                               <font>
+                                                                  <Font name="Consolas Bold" size="16.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets top="10.0" />
+                                                               </padding>
+                                                            </Label>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox fx:id="knobBox11" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                         <children>
+                                                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="195.0" text="TONE">
+                                                               <font>
+                                                                  <Font name="Consolas Bold" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </GridPane>
+                                                <VBox fx:id="knobBox111" alignment="CENTER" prefHeight="176.0" prefWidth="303.0" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </Pane>
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="ON/OFF" translateX="326.0" translateY="180.0" />
+                                    <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="MUTE" translateX="273.0" translateY="180.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="BANDWIDTH FILTER" translateX="-269.0" translateY="186.0" />
+                                    <Slider fx:id="frequencyFilterSlider" max="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="14.0" prefWidth="530.0" translateX="-63.0" translateY="205.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TUNING FREQUENCY" translateX="-266.0" translateY="223.0" />
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <ToolBar fx:id="myToolBar" prefHeight="40.0" prefWidth="424.0" BorderPane.alignment="CENTER">
+        <items>
+            <HBox fx:id="toolBarHbox">
+               <children>
+                  <Button fx:id="sandboxButton" mnemonicParsing="false" text="Sandbox" />
+                  <HBox fx:id="leftSpacingHbox" />
+                  <HBox fx:id="midSpacingHbox">
+                     <children>
+                        <Button fx:id="trainingButton" mnemonicParsing="false" text="Training" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="rightSpacingHbox">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#showInstructions" text="Instructions" />
+                        <Button fx:id="configButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="56.0" text="Config" />
+                        <Button fx:id="minimizeButton" mnemonicParsing="false" text="-" />
+                        <Button fx:id="fullScreenButton" mnemonicParsing="false" text="#" />
+                      <Button fx:id="closeButton" mnemonicParsing="false" text="X" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+        </items>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </ToolBar>
+   </top>
+</BorderPane>

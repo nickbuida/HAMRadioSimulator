@@ -1,2 +1,2 @@
-# HAMRadioSimulator
-simulating a HAM radio
+# EgretRepo
+Team Egret's Educational HAM Radio Simulator

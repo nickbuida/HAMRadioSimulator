@@ -1,0 +1,12 @@
+{
+  "expectedAnswer": "EXPECTED ANSWER",
+  "answerFreq": 144.39,
+  "morseBotPhrase": ".... . .-.. .-.. --- * .-- --- .-. .-.. -..",
+  "morseCallSign": "-.-. .- .-.. .-.. ... .. --. -.",
+  "textBotPhrase": "Hello World",
+  "textCallSign": "CALLSIGN",
+  "outputFrequency": 0.0,
+  "frequencyRange": 0.0,
+  "band": 1,
+  "name": "TestBot"
+}

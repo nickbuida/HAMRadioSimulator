@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="185.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.UI.BotAdderController">
+   <children>
+      <HBox layoutX="-2.0" prefHeight="201.0" prefWidth="522.0">
+         <children>
+            <VBox prefHeight="186.0" prefWidth="256.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="92.0" prefWidth="474.0" text="Add Bot View">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="94.0" text="Name:" />
+                        <TextField fx:id="botNameField" prefHeight="43.0" prefWidth="121.0" promptText="Steven" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="94.0" text="Call Sign:" />
+                        <TextField fx:id="callSignField" prefHeight="43.0" prefWidth="121.0" promptText="K5AA" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="94.0" text="Message:" />
+                        <TextField fx:id="messageField" prefHeight="43.0" prefWidth="121.0" promptText="say hello at 28.000" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Button fx:id="addBtn" mnemonicParsing="false" text="Add Bot" />
+                        <Button fx:id="cancelBtn" mnemonicParsing="false" text="Cancel" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="186.0" prefWidth="266.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="92.0" prefWidth="474.0">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="30.0" prefWidth="102.0" text="Answer Frequency:" />
+                        <TextField fx:id="answerFreqField" prefHeight="43.0" prefWidth="121.0" promptText="28.000" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="30.0" prefWidth="102.0" text="Expected Answer:" />
+                        <TextField fx:id="expectedAnswerField" prefHeight="43.0" prefWidth="121.0" promptText="hello" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <children>
+                        <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="223.0" text="Notes: Make the bot message tell the user to say the answer at a certain frequency. Avoid special characters except period." wrapText="true">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="10.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="266.0" spacing="20.0" style="-fx-background-color: #616161;">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
