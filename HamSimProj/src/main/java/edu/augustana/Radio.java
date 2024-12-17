@@ -78,7 +78,7 @@ public class Radio {
 
 
     // Method to generate a tone and play it on the given line
-    static void playTone(double frequency) {
+    static void playTone(double frequency, double soundAmplitude) {
         if (isPlaying) {
             return;  // Prevent starting multiple threads for the same tone
         }
@@ -92,7 +92,7 @@ public class Radio {
 
             while (isPlaying) {// Only play while isPlaying is true
 
-                playSound(angles, 0, BUFFER_SIZE2, biquadFilter, buffer, line, frequency);
+                playSound(angles, 0, BUFFER_SIZE2, biquadFilter, buffer, line, frequency, soundAmplitude);
 
 
             }
@@ -203,7 +203,7 @@ public class Radio {
 
                 int frequency = randGen.nextInt(upperNoiseFreqBoundary - lowerNoiseFreqBoundary) + lowerNoiseFreqBoundary;
 
-                playSound(angles, 0, BUFFER_SIZE2, biquadFilter2, buffer2, line2, 0);
+                playSound(angles, 0, BUFFER_SIZE2, biquadFilter2, buffer2, line2, 0, soundAmplitud);
 
 
             }
@@ -221,12 +221,12 @@ public class Radio {
         biquadFilter.setFilterValue(newFilterVal);
     }
 
-    static void playSound(double[] angles, int angleIndex, int bufferSize, BiquadLowPassFilter8Bit filter, byte[] buffer,  SourceDataLine line, double frequency){
+    static void playSound(double[] angles, int angleIndex, int bufferSize, BiquadLowPassFilter8Bit filter, byte[] buffer,  SourceDataLine line, double frequency, double soundAmplitude){
         double angleIncrement  = 2.0 * Math.PI * frequency / format.getSampleRate();
 
         // Only play while isPlaying is true
         for (int i = 0; i < bufferSize; i++) {
-            double sineSample = ( soundAmplitud * ((Math.sin(angles[angleIndex])) + generateGaussianNoise(noiseAmplitud, randGen))); // 0 for no noise
+            double sineSample = ( soundAmplitude * ((Math.sin(angles[angleIndex])) + generateGaussianNoise(noiseAmplitud, randGen))); // 0 for no noise
             //double sineSample = ( soundAmplitud * ((Math.sin(angles[angleIndex]))));
 
             // Clip and normalize the sample to fit into 8-bit range [-128, 127]

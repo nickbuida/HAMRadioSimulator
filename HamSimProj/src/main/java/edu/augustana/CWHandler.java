@@ -42,7 +42,7 @@ public class CWHandler {
      */
     public static void startTimer() {
         if (!alreadyPressed) {
-            playTone(Radio.getCwToneFreq());
+            playTone(Radio.getCwToneFreq(), Radio.getSoundAmplitud());
             marginOfError = 0.2;
             spaceTimerStop();
             startTime = System.nanoTime();

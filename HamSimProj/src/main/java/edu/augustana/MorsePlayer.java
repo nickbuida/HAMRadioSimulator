@@ -34,7 +34,7 @@ public class MorsePlayer {
 
         for(int i = 0; i < morse.length ; i++){
             if(morse[i] == '.'){
-                playTone(Radio.getCwToneFreq());
+                playTone(getCwToneFreq(), getSoundAmplitud());
                 startTimer();
                 try {
                     Thread.sleep(beatLength + randGen2.nextInt( (int) (beatLength * variation)));
@@ -43,7 +43,7 @@ public class MorsePlayer {
                 stopTone();
                 stopTimer();
             }else if(morse[i] == '-'){
-                playTone(Radio.getCwToneFreq()); startTimer();
+                playTone(getCwToneFreq(), getSoundAmplitud()); startTimer();
                 try {
                     Thread.sleep((beatLength * 3) + randGen2.nextInt( (int) (beatLength * variation)));
                 } catch (InterruptedException e) {
@@ -99,10 +99,13 @@ public class MorsePlayer {
 
                 // this is for the tuning slider
                 double freqDiff = Math.abs(getSelectedTuneFreq() -  botFrequency);
+
+                //System.out.println("sound amplitude: " + soundAmplitude);
                 if (freqDiff < .0028) {
                     freq = sideTone;
                 }
-                System.out.println("Final freq: " + freq);
+                //System.out.println("Final freq: " + freq);
+                double soundAmplitude = calculateSoundAmplitude(freq);
                 double filterRange = (frequencyRange * filterVal) / 2;
                 if (freqDiff > filterRange) {
                     freq = 0;
@@ -110,7 +113,7 @@ public class MorsePlayer {
 
                 if(morse[i] == '.'){
 
-                    playTone(freq);
+                    playTone(freq, soundAmplitude);
                     //startTimer();
                     try {
                         Thread.sleep(beatLength + randGen2.nextInt( (int) (beatLength * variation)));
@@ -121,7 +124,7 @@ public class MorsePlayer {
                     //stopTimer();
                 }else if(morse[i] == '-'){
 
-                    playTone(freq);
+                    playTone(freq, soundAmplitude);
                     //startTimer();
                     try {
                         Thread.sleep((beatLength * 3) + randGen2.nextInt( (int) (beatLength * variation)));
@@ -149,6 +152,21 @@ public class MorsePlayer {
 
 
 
+    }
+
+    private static double calculateSoundAmplitude(double freq) {
+        double logged =  .1 * Math.log(freq) - .5;
+        if (logged > .3) {
+           logged = logged * 2;
+        }
+        //System.out.println("Logged freq: " + logged);
+        double soundAmplitude = 1 - logged;
+        if (soundAmplitude > 1) {
+            soundAmplitude = 1;
+        } else if (soundAmplitude < 0) {
+            soundAmplitude = 0;
+        }
+        return soundAmplitude;
     }
 
     //returns the amount of time that this message will take to play
@@ -195,6 +213,36 @@ public class MorsePlayer {
 
 
     public static void setSideTone() {
-        sideTone = Radio.getCwToneFreq();
+        sideTone = getCwToneFreq();
+    }
+
+    private static double getFreqRange(int band) {
+        double frequencyRange = 0;
+        switch (band) {
+            case 10:
+                frequencyRange = 1.7;
+                break;
+
+            case 17:
+                frequencyRange = .1;
+                break;
+
+            case 20:
+                frequencyRange = .35;
+                break;
+
+            case 30:
+                frequencyRange = .05;
+                break;
+
+            case 40:
+                frequencyRange = .3;
+                break;
+
+            case 80:
+                frequencyRange = .5;
+                break;
+        }
+        return frequencyRange;
     }
 }

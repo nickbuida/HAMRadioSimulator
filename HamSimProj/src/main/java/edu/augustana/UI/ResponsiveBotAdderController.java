@@ -1,7 +1,6 @@
 package edu.augustana.UI;
 
 import edu.augustana.BotCollection;
-import edu.augustana.Bots.ContinuousMessageBot;
 import edu.augustana.Bots.ResponsiveBot;
 import edu.augustana.Radio;
 import edu.augustana.SimScenario;
@@ -12,7 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class BotAdderController {
+public class ResponsiveBotAdderController {
 
     @FXML
     private Button addBtn;

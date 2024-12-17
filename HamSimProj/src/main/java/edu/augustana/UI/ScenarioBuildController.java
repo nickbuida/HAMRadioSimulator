@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edu.augustana.*;
 import edu.augustana.Bots.Bot;
-import edu.augustana.Bots.ContinuousMessageBot;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -64,7 +63,9 @@ public class ScenarioBuildController {
 
     private SimScenario scenario;
 
-    private BotAdderController adderController;
+    private ResponsiveBotAdderController responsiveBotAdderController;
+
+    private AIBotAdderController aiBotAdderController;
 
     private BotCollection botCollection;
 
@@ -113,6 +114,8 @@ public class ScenarioBuildController {
             }else{
                 scenario.saveToFile();
             }
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
 
         });
 
@@ -160,15 +163,29 @@ public class ScenarioBuildController {
 
     private void openBotAdder() throws IOException {
         Stage scenarioBuildStage = new Stage();
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("BotAdder.fxml"));
+        FXMLLoader loader;
 
-        scenarioBuildStage.setTitle("Scenario Builder");
-        scenarioBuildStage.setScene(new Scene(loader.load()));
-        scenarioBuildStage.show();
+        if (scenarioTypeChoice.getValue().equals("Responsive")) {
+            loader = new FXMLLoader(App.class.getResource("ResponsiveBotAdder.fxml"));
+            scenarioBuildStage.setTitle("Scenario Builder");
+            scenarioBuildStage.setScene(new Scene(loader.load()));
+            scenarioBuildStage.show();
+            responsiveBotAdderController = loader.getController();
+            responsiveBotAdderController.setBotCollection(botCollection);
+            responsiveBotAdderController.setParentController(this);
+        } else {
+            loader = new FXMLLoader(App.class.getResource("AIBotAdder.fxml"));
+            scenarioBuildStage.setTitle("Scenario Builder");
+            scenarioBuildStage.setScene(new Scene(loader.load()));
+            scenarioBuildStage.show();
+            aiBotAdderController = loader.getController();
+            aiBotAdderController.setBotCollection(botCollection);
+            aiBotAdderController.setParentController(this);
+        }
 
-        adderController = loader.getController();
-        adderController.setBotCollection(botCollection);
-        adderController.setParentController(this);
+
+
+
     }
 
     public void editScenario(SimScenario scenario){

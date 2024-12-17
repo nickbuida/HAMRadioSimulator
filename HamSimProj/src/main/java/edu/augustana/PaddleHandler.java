@@ -32,7 +32,7 @@ public class PaddleHandler {
             stopSpaceTimer();
             dotPaddlePressed = true;
             while (dotPaddlePressed) {
-                playTone(Radio.getCwToneFreq());
+                playTone(Radio.getCwToneFreq(), Radio.getSoundAmplitud());
                 try {
                     //CWHandler.addToCwString(".");
                     cwString.append(".");
@@ -56,7 +56,7 @@ public class PaddleHandler {
             stopSpaceTimer();
             dashPaddlePressed = true;
             while (dashPaddlePressed) {
-                playTone(Radio.getCwToneFreq());
+                playTone(Radio.getCwToneFreq(), Radio.getSoundAmplitud());
                 try {
                    // CWHandler.addToCwString("-");
                     cwString.append("-");

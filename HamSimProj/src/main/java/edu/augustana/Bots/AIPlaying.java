@@ -1,7 +1,10 @@
 package edu.augustana.Bots;
 
 import edu.augustana.MorsePlayer;
+import edu.augustana.ScenarioCollection;
+import edu.augustana.SimScenario;
 import edu.augustana.TextToMorseConverter;
+import edu.augustana.UI.SandboxController;
 import javafx.animation.PauseTransition;
 import javafx.util.Duration;
 import swiss.ameri.gemini.api.*;
@@ -10,6 +13,10 @@ public class AIPlaying implements PlayingBehavior{
 
     private final AIBot bot;
 
+    private SandboxController currentController;
+
+    private boolean wasTalkedTo = false;
+
     public AIPlaying(AIBot bot) {
         this.bot = bot;
     }
@@ -17,20 +24,34 @@ public class AIPlaying implements PlayingBehavior{
     @Override
     public void startBehavior() {
         new Thread(() -> {
+            String message = "Talk to me at " + bot.getOutputFrequency();
             try {
-                MorsePlayer.playBotMorseString(TextToMorseConverter.textToMorse("Talk to me at " + bot.getOutputFrequency()), bot.getOutputFrequency(), bot.getFrequencyRange());
+
+                MorsePlayer.playBotMorseString(TextToMorseConverter.textToMorse(message), bot.getOutputFrequency(), bot.getFrequencyRange());
+
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-        }).start();
 
+            currentController = null;
+
+            for (SimScenario scenario : ScenarioCollection.getCollection()) {
+                if (scenario.isPlaying) {
+                    currentController = scenario.getParentController();
+                }
+            }
+
+            assert currentController != null;
+            currentController.addMessageToScenarioUI(bot.getName() + ": " + message, bot.getName() + ": " + TextToMorseConverter.textToMorse(message));
+
+        }).start();
     }
 
     public void playResponse(String userMessage) {
         new Thread(() -> {
 
             String fullPrompt = bot.getSystemPromptText() + "\n" +
-                    "Your name is: " + bot.getName() + "\n" +
+
                     "Respond to the following message in 10 words or less by using the description of your character above:\n"
                     + userMessage;
 
@@ -44,16 +65,29 @@ public class AIPlaying implements PlayingBehavior{
 
             //add an if statement here to see if they had been talked to yet. If not, then make them say cq then call sign. Just use a boolean
 
-            String fullPrompt = bot.getSystemPromptText() + "\n" +
-                    "Your name is: " + bot.getName() + "\n" +
-                    "Generate a random message in 10 words or less by using the description of your character above.";
+            if (wasTalkedTo) {
+                String fullPrompt = bot.getSystemPromptText() + "\n" +
+                        "Your name is: " + bot.getName() + "\n" +
+                        "Generate a random message in 10 words or less by using the description of your character above. Only say your name 50 %.";
 
-            requestMessage(fullPrompt);
+                requestMessage(fullPrompt);
+            } else {
+                try {
+                    MorsePlayer.playBotMorseString(TextToMorseConverter.textToMorse("CQ CQ " + bot.getTextCallSign()), bot.getOutputFrequency(), bot.getFrequencyRange());
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                currentController.addMessageToScenarioUI(bot.getName() + ": " + "CQ CQ " + bot.getTextCallSign(), bot.getName() + ": " + TextToMorseConverter.textToMorse("CQ CQ " + bot.getTextCallSign()));
+            }
+
+
 
         }).start();
     }
 
-    public void requestMessage(String fullPrompt){
+    private void requestMessage(String fullPrompt){
+
+        this.wasTalkedTo = true;
 
         var model = createBotModel(fullPrompt);
 
@@ -62,6 +96,13 @@ public class AIPlaying implements PlayingBehavior{
                     String geminiResponse = gcr.text();
                     System.out.println("Debug: AIBot received response: " + geminiResponse);
                     //add message to chatlog and play the message in morse
+                    try {
+                        MorsePlayer.playBotMorseString(TextToMorseConverter.textToMorse(geminiResponse), bot.getOutputFrequency(), bot.getFrequencyRange());
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    currentController.addMessageToScenarioUI(bot.getName() + ": " + geminiResponse, bot.getName() + ": " + TextToMorseConverter.textToMorse(geminiResponse));
+
                 });
 
     }

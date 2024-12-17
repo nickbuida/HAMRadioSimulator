@@ -1,5 +1,6 @@
 package edu.augustana.Bots;
 
+import edu.augustana.TextToMorseConverter;
 import swiss.ameri.gemini.api.*;
 import swiss.ameri.gemini.spi.JsonParser;
 import swiss.ameri.gemini.gson.GsonJsonParser;
@@ -8,7 +9,7 @@ import swiss.ameri.gemini.gson.GsonJsonParser;
 
 public class AIBot extends Bot{
 
-    private String systemPromptText;
+    private final String systemPromptText;
     private JsonParser parser;
     GenAi genAi;
 
@@ -24,7 +25,8 @@ public class AIBot extends Bot{
 
     @Override
     public void playSound() {
-
+        //this method will only be used for the initial message
+        playBehavior();
     }
 
     @Override
@@ -32,13 +34,14 @@ public class AIBot extends Bot{
 
     }
 
-
     public void talkTo(String userMorseMessage) {
-
+        AIPlaying behavior = (AIPlaying) getBehaviorType();
+        behavior.playResponse(TextToMorseConverter.morseToText(userMorseMessage));
     }
 
     public void randomMessage() {
-
+        AIPlaying behavior = (AIPlaying) getBehaviorType();
+        behavior.playRandom();
     }
 
     public GenAi getGenAi() {

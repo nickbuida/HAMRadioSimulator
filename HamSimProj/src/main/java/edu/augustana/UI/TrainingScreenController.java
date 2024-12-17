@@ -3,15 +3,15 @@ package edu.augustana.UI;
 import edu.augustana.CWFlashcards;
 import edu.augustana.CWHandler;
 import edu.augustana.HandleListeningSim;
-import edu.augustana.PaddleHandler;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.List;
 
 
 public class TrainingScreenController {
@@ -84,11 +84,19 @@ public class TrainingScreenController {
     @FXML
     private Button endButton;
 
+    @FXML
+    private AnchorPane cwPane;
+
+    @FXML
+    private Label cwLabel;
+
     private String[] trainingTypeArray = {"Listening", "Typing"};
 
     private ImageView cheatSheetImage;
 
+    public static boolean inTraining = false;
 
+    private MainUiController parentController;
 
 
     @FXML
@@ -113,6 +121,7 @@ public class TrainingScreenController {
         stopSimButton.setOnAction(evt -> HandleListeningSim.stopSim(guessedMessagesVBox));
 
         //CW Flashcards Section
+
         setDefaultMenu();
         trainingTypeChoiceBox.setItems(FXCollections.observableArrayList(trainingTypeArray));
         submitButton.setOnAction(evt-> {
@@ -136,6 +145,7 @@ public class TrainingScreenController {
                     }
                     correctIncorrectLabel.setVisible(true);
                     CWHandler.resetCwString();
+                    setCWInvisible();
                 } catch (Exception e) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION, "You must type something in.");
                     alert.showAndWait();
@@ -164,6 +174,8 @@ public class TrainingScreenController {
         });
 
         startTrainingButton.setOnAction(evt -> {
+            CWHandler.resetCwString();
+            inTraining = true;
             if (!lettersCheckBox.isSelected() && !numbersCheckBox.isSelected() && !abbrevCheckBox.isSelected()) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "You must select a difficulty type.");
                 alert.showAndWait();
@@ -184,8 +196,10 @@ public class TrainingScreenController {
         });
 
         endButton.setOnAction(evt -> {
+            inTraining = false;
             setDefaultMenu();
             CWFlashcards.resetCurrent();
+            setCWInvisible();
         });
 
         //End of CW Flashcards Section
@@ -208,6 +222,8 @@ public class TrainingScreenController {
             guessTextField.setVisible(false);
             submitButton.setVisible(false);
             endButton.setVisible(false);
+            cwPane.setVisible(false);
+            cwLabel.setVisible(false);
         }
 
         private void setListeningMenu() {
@@ -242,6 +258,26 @@ public class TrainingScreenController {
             numbersCheckBox.setVisible(false);
             abbrevCheckBox.setVisible(false);
             startTrainingButton.setVisible(false);
+        }
+
+
+
+        public void updateCWLabel() {
+            cwLabel.setText(CWHandler.getCwString());
+        }
+
+        public void setCWVisible() {
+            cwPane.setVisible(true);
+            cwLabel.setVisible(true);
+        }
+
+        public void setCWInvisible() {
+            cwPane.setVisible(false);
+            cwLabel.setVisible(false);
+        }
+
+        public void setParentController(MainUiController controller) {
+            this.parentController = controller;
         }
 
 }

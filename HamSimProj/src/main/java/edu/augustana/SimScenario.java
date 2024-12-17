@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Random;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
@@ -14,9 +15,11 @@ import edu.augustana.Bots.AIBot;
 import edu.augustana.Bots.Bot;
 import edu.augustana.Bots.ResponsiveBot;
 import edu.augustana.UI.SandboxController;
+import javafx.animation.PauseTransition;
 import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class SimScenario {
 
@@ -77,6 +80,8 @@ public class SimScenario {
             }
         }
 
+        handleAIScenario();
+
 
 
     }
@@ -89,6 +94,32 @@ public class SimScenario {
                 bot.stopSound();
             }
         }
+    }
+
+    private void handleAIScenario() {
+        if (this.scenarioType.equals("AI")) {
+            new Thread(() -> {
+                Random randGen = new Random();
+                while (this.isPlaying) {
+
+                    try {
+                        Thread.sleep(20000); //Generates a random message every 20 seconds
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    if (!botCollection.getBots().isEmpty()) {
+
+                        int index = randGen.nextInt(botCollection.getBots().size());
+                        AIBot bot = (AIBot) botCollection.getBots().get(index);
+                        bot.randomMessage();
+                    }
+                }
+
+            }).start();
+
+        }
+
     }
 
     public void setParentController(SandboxController controller) {
@@ -193,8 +224,6 @@ public class SimScenario {
 
     public void checkMessage(String userMorseMessage) {
 
-        //have to add an if else statement here for whether its AI or responsive
-
         //Add message to the chat log
         parentController.addMessageToScenarioUI(TextToMorseConverter.morseToText(userMorseMessage.replace(' ', '/')), userMorseMessage.replace(' ', '/'));
 
@@ -212,6 +241,7 @@ public class SimScenario {
                 if (responsiveBot.getStage() == 1) {
                     if (Math.abs(bot.getOutputFrequency() - userFreq) < lowestFreqDistance) {
                         closestBot = (ResponsiveBot) bot;
+                        lowestFreqDistance = Math.abs(bot.getOutputFrequency() - userFreq);
                     }
                 } else if (responsiveBot.getStage() == 2) {
                     if (userFreq >= responsiveBot.getAnswerFreq() - 0.05 && userFreq <= responsiveBot.getAnswerFreq() + 0.05) {
@@ -247,10 +277,13 @@ public class SimScenario {
 
                 if (Math.abs(bot.getOutputFrequency() - userFreq) < lowestFreqDistance) {
                     closestBot = (AIBot) bot;
+                    lowestFreqDistance = Math.abs(bot.getOutputFrequency() - userFreq);
                 }
             }
 
-            closestBot.talkTo(userMorseMessage);
+            if (closestBot != null) {
+                closestBot.talkTo(userMorseMessage);
+            }
 
         }
 

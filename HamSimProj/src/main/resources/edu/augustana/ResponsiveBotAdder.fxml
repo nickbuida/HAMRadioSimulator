@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="185.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.UI.BotAdderController">
+<AnchorPane prefHeight="185.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.UI.ResponsiveBotAdderController">
    <children>
       <HBox layoutX="-2.0" prefHeight="201.0" prefWidth="522.0">
          <children>

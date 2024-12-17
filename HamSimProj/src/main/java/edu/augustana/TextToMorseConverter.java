@@ -47,6 +47,12 @@ public class TextToMorseConverter {
         morseCodeMap.put(".", ".-.-.-");
         morseCodeMap.put("-", "-....-");
         morseCodeMap.put(" ", "*"); // Space separator in Morse code
+        morseCodeMap.put("'", ".----.");
+        morseCodeMap.put(":", "---...");
+        morseCodeMap.put(",", "--..--");
+        morseCodeMap.put("?", "..--..");
+        morseCodeMap.put("!", "-.-.--");
+        morseCodeMap.put(";", "-.-.-.");
     }
 
 
@@ -93,6 +99,14 @@ public class TextToMorseConverter {
         morseToTextMap.put("/", " ");// Space between words
         morseToTextMap.put(" ", " ");// Space between words
         morseToTextMap.put("*", " ");
+        morseToTextMap.put(".-.-.-", ".");
+        morseToTextMap.put("-....-", "-");
+        morseToTextMap.put(".----.", "'");
+        morseToTextMap.put("---...", ":");
+        morseToTextMap.put("--..--", ",");
+        morseToTextMap.put("..--..", "?");
+        morseToTextMap.put("-.-.--", "!");
+        morseToTextMap.put("-.-.-.", ";");
     }
 
 

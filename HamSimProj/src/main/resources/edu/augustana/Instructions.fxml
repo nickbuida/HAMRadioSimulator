@@ -22,7 +22,7 @@
                            <children>
                               <VBox alignment="TOP_CENTER" prefHeight="372.0" prefWidth="600.0" style="-fx-background-color: #606160;">
                                  <children>
-                                    <Label prefHeight="156.0" prefWidth="574.0" text="Before you do anything, you must turn on the radio. This can be done by button in bottom right hand corner of the radio. The button to the left of that is the mute button, which will silence all incoming and outgoing sound. After that, in order to hear anything, you will need to turn the volume up and open both filters. The first filter is a low-pass filter, which filters out noise from outside interference, like the weather.  This is controlled by the knob labeled &quot;FILTER&quot;. If the filter is closed all the way, you won't be able to hear anything. The top slider on the bottom of the radio is a frequency filter. This will filter out incoming CW transmissions if they are far away enough from where you are tuned into, and this filter will also need to be opened in order to hear anything. The bottom slider is your &quot;dial&quot;, which allows you to change the frequency that you are tuned into." textFill="WHITE" wrapText="true">
+                                    <Label prefHeight="174.0" prefWidth="574.0" text="Before you do anything, you must turn on the radio. This can be done by button in bottom right hand corner of the radio. The button to the left of that is the mute button, which will silence all incoming and outgoing sound. After that, in order to hear anything, you will need to turn the volume up and open both filters. The first filter is a low-pass filter, which filters out noise from outside interference, like the weather.  This is controlled by the knob labeled &quot;FILTER&quot;. If the filter is closed all the way, you won't be able to hear anything. The top slider on the bottom of the radio is a frequency filter. This will filter out incoming CW transmissions if they are far away enough from where you are tuned into, and this filter will also need to be opened in order to hear anything. The bottom slider is your &quot;dial&quot;, which allows you to change the frequency that you are tuned into." textFill="WHITE" wrapText="true">
                                        <font>
                                           <Font name="Sitka Heading" size="12.0" />
                                        </font>
@@ -40,7 +40,7 @@
                                           <Font name="Sitka Heading" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="36.0" prefWidth="574.0" text="Along the top of the screen, there are buttons which control the right panel. You can switch between training and sandbox, and even pull this window back up with the &quot;Instructions&quot; button!" textFill="WHITE" wrapText="true">
+                                    <Label prefHeight="49.0" prefWidth="574.0" text="Along the top of the screen, there are buttons which control the right panel. You can switch between training and sandbox, and even pull this window back up with the &quot;Instructions&quot; button!" textFill="WHITE" wrapText="true">
                                        <font>
                                           <Font name="Sitka Heading" size="12.0" />
                                        </font>
@@ -51,6 +51,71 @@
                         </AnchorPane>
                   </content>
                 </Tab>
+                  <Tab text="Sandbox">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox alignment="TOP_CENTER" layoutX="-1.0" layoutY="-3.0" prefHeight="376.0" prefWidth="600.0" style="-fx-background-color: #606160;">
+                                 <children>
+                                    <Label prefHeight="51.0" prefWidth="570.0" text="To get to the Sandbox, hit the &quot;Sandbox&quot; button on the title bar. This will give you access to Scenarios and Servers." textFill="WHITE" wrapText="true">
+                                       <font>
+                                          <Font name="Sitka Heading" size="12.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets top="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label prefHeight="60.0" prefWidth="574.0" text="Scenarios are a mode where a specified number of bots will appear, with specified conditions, and the user will have to navigate the scenario depending on what is asked of them. You can create new ones, customize them, and save them to your computer. You can then, later, load that same scenario back up and play through it." textFill="WHITE" wrapText="true">
+                                       <font>
+                                          <Font name="Sitka Heading" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="88.0" prefWidth="575.0" text="There are two types of scenarios: Responsive and AI. When creating a scenario you input all of the desired scenario descriptions, and then you decide whether the scenario will be responsive or AI. A scenario also needs bots! So once you have decided what type your scenario will be, then you can add your bots. You can completely customize your bots by filling in the text boxes in the bot creation window. " textFill="WHITE" wrapText="true">
+                                       <font>
+                                          <Font name="Sitka Heading" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="93.0" prefWidth="575.0" text="If you create a responsive scenario, then you will have to go through two stages of development for each bot. At the beginning of the scenario, each bot will be saying CQ and then its call sign. Your job is to tell the bot &quot;RO&quot;, then its call sign back to them to tell them roger and that you hear them. After that, then they will play their message where they will tell you what frequency to send a message. Once that is done, then that bot is complete! Then you move onto the next bot in the scenario." textFill="WHITE" wrapText="true">
+                                       <font>
+                                          <Font name="Sitka Heading" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="59.0" prefWidth="574.0" text="For an AI scenario, the bots will be playing CQ and their call sign at random times to try to get you to talk to them. Once you start talking to them, then they will respond to the message you send them or say something random based on the prompt you gave them." textFill="WHITE" wrapText="true">
+                                       <font>
+                                          <Font name="Sitka Heading" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="41.0" prefWidth="574.0" text="Servers allow you to connect with other users and talk to them directly. You can create your own server or join others. You can choose whether or not you want to transmit in CW or English." textFill="WHITE" wrapText="true">
+                                       <font>
+                                          <Font name="Sitka Heading" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Listening Sim">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox alignment="TOP_CENTER" layoutY="-1.0" prefHeight="372.0" prefWidth="600.0" style="-fx-background-color: #606160;">
+                                 <children>
+                                    <Label prefHeight="99.0" prefWidth="559.0" text="Listening Sim will generate a number of bots based on what the user selected, and these bots will continuously transmit their callsign, wait a few seconds, and then transmit their message. You will be required to translate both their callsign and message and put them in their respective boxes. If you are correct, the message will show up green in the text box. If not, red." textFill="WHITE" wrapText="true">
+                                       <font>
+                                          <Font name="Sitka Heading" size="12.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets top="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
                 <Tab text="Flashcards">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #606160;">
@@ -93,65 +158,20 @@
                            <children>
                               <VBox alignment="TOP_CENTER" prefHeight="376.0" prefWidth="600.0" style="-fx-background-color: #606160;">
                                  <children>
-                                    <Label prefHeight="41.0" prefWidth="566.0" text="If you hold the straight key down for a long time as your first straight key input, it messes with how we calculate your words per minute, and makes the straight key unusable. " textFill="WHITE" wrapText="true">
+                                    <Label prefHeight="41.0" prefWidth="566.0" text="If you hold the straight key down for a long time as your first straight key input, it messes with how we calculate your words per minute, and makes the straight key unusable." textFill="WHITE" wrapText="true">
                                        <font>
                                           <Font name="Sitka Heading" size="12.0" />
                                        </font>
                                     </Label>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                    </content>
-                  </Tab>
-                  <Tab text="Sandbox">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox alignment="TOP_CENTER" layoutX="-1.0" layoutY="-3.0" prefHeight="376.0" prefWidth="600.0" style="-fx-background-color: #606160;">
-                                 <children>
-                                    <Label prefHeight="51.0" prefWidth="570.0" text="To get to the Sandbox, hit the &quot;Sandbox&quot; button on the title bar. This will give you access to Scenarios and Servers." textFill="WHITE" wrapText="true">
-                                       <font>
-                                          <Font name="Sitka Heading" size="12.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets top="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label prefHeight="60.0" prefWidth="574.0" text="Scenarios are a mode where a specified number of bots will appear, with specified conditions, and the user will have to navigate the scenario depending on what is asked of them. You can create new ones, customize them, and save them to your computer. You can then, later, load that same scenario back up and play through it." textFill="WHITE" wrapText="true">
+                                    <Label prefHeight="41.0" prefWidth="566.0" text="When editing a scenario and you change the name, the name would not change on the view of the drop down menu but it will show up if you open the dropdown menu" textFill="WHITE" wrapText="true">
                                        <font>
                                           <Font name="Sitka Heading" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="88.0" prefWidth="575.0" text="When making a scenario, you are going to need bots! There are two different types of bots, responsive and AI. Responsive bots will send out a message, wait for a response, and then send out its message again. Once it receives its desired message, it will stop outputting CW. These bots are completely prescripted. The AI bots, however, are not. These run through Google's Gemini AI and give responsed based on the prompts that you give it." textFill="WHITE" wrapText="true">
+                                    <Label prefHeight="57.0" prefWidth="566.0" text="When creating a scenario, you cannot create a bot of a certain type, and then change the type of the scenario to create a different bot. This will cause the scenario to crash. The entire scenario has to be of one type." textFill="WHITE" wrapText="true">
                                        <font>
                                           <Font name="Sitka Heading" size="12.0" />
                                        </font>
-                                    </Label>
-                                    <Label prefHeight="34.0" prefWidth="574.0" text="Servers allow you to connect with other users and talk to them directly. You can create your own server or join others. You can choose whether or not you want to transmit in CW or English." textFill="WHITE" wrapText="true">
-                                       <font>
-                                          <Font name="Sitka Heading" size="12.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                    </content>
-                  </Tab>
-                  <Tab text="Listening Sim">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <VBox alignment="TOP_CENTER" layoutY="-1.0" prefHeight="372.0" prefWidth="600.0" style="-fx-background-color: #606160;">
-                                 <children>
-                                    <Label prefHeight="77.0" prefWidth="559.0" text="Listening Sim will generate a number of bots based on what the user selected, and these bots will continuously transmit their callsign, wait a few seconds, and then transmit their message. You will be required to translate both their callsign and message and put them in their respective boxes. If you are correct, the message will show up green in the text box. If not, red." textFill="WHITE" wrapText="true">
-                                       <font>
-                                          <Font name="Sitka Heading" size="12.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets top="10.0" />
-                                       </padding>
                                     </Label>
                                  </children>
                               </VBox>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="185.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.UI.AIBotAdderController">
+   <children>
+      <VBox layoutX="-2.0">
+         <children>
+            <HBox prefHeight="102.0" prefWidth="522.0">
+               <children>
+                  <VBox prefHeight="186.0" prefWidth="256.0" spacing="10.0">
+                     <children>
+                        <Label prefHeight="32.0" prefWidth="256.0" text="Add Bot View">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="74.0" prefWidth="256.0">
+                           <children>
+                              <Label prefHeight="40.0" prefWidth="94.0" text="Name:" />
+                              <TextField fx:id="botNameField" prefHeight="43.0" prefWidth="121.0" promptText="Steven" />
+                           </children>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="266.0" spacing="10.0">
+                     <children>
+                        <Label prefHeight="31.0" prefWidth="266.0">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="62.0" prefWidth="266.0">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                           <children>
+                              <Label prefHeight="40.0" prefWidth="94.0" text="Call Sign:" />
+                              <TextField fx:id="callSignField" prefHeight="43.0" prefWidth="121.0" promptText="K5AA" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="266.0" spacing="20.0" style="-fx-background-color: #616161;">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox>
+               <children>
+                  <HBox prefHeight="111.0" prefWidth="522.0">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="108.0" text="AI Bot Prompt:">
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="aiBotPromptTextField" prefHeight="112.0" prefWidth="422.0" promptText="You are a helicopter pilot">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="33.0" prefWidth="522.0">
+                     <children>
+                        <Button fx:id="addBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="65.0" text="Add Bot">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="cancelBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="59.0" text="Cancel" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

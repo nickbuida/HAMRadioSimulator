@@ -127,6 +127,8 @@ public class MainUiController {
 
     private static InstructionsController instructionsController;
 
+    private TrainingScreenController trainingScreenController;
+
 
 
     KnobControl volumeKnob;
@@ -316,6 +318,8 @@ public class MainUiController {
 
         VBox trainingVbox = loader.load();
         mainHbox.getChildren().add(trainingVbox);
+        trainingScreenController = loader.getController();
+        trainingScreenController.setParentController(this);
     }
 
     private void mute() throws IOException{
@@ -398,7 +402,7 @@ public class MainUiController {
 
     private void handleKeyPressHelper(KeyEvent keyEvent){
         isPressed = true;
-        //  System.out.println(System.nanoTime());
+          System.out.println(System.nanoTime());
         if (keyEvent.getCode() == KeyCode.J) {
             new Thread(() -> {
                 try {
@@ -432,6 +436,7 @@ public class MainUiController {
     }
 
     private void handleKeyReleaseHelper(KeyEvent keyEvent) throws Exception {
+
         if (keyEvent.getCode() == KeyCode.J || keyEvent.getCode() == KeyCode.K) {
             CWHandler.sendMessageTimer();
             PaddleHandler.stopPaddlePress();
@@ -443,6 +448,10 @@ public class MainUiController {
             CWHandler.sendMessageTimer();
 //            addToMorseBox(CWHandler.getCwString());
 //            addToEnglishBox(CWHandler.getCwString());
+        }
+        if ((keyEvent.getCode() == KeyCode.J || keyEvent.getCode() == KeyCode.K || keyEvent.getCode() == KeyCode.L) && TrainingScreenController.inTraining) {
+            trainingScreenController.updateCWLabel();
+            trainingScreenController.setCWVisible();
         }
         isPressed = false;
     }
